@@ -3,20 +3,94 @@
 @layer base {
   :root {
     color-scheme: dark;
-    --apple-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Inter, sans-serif;
+    --apple-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Helvetica Neue", "Inter", -system-ui, sans-serif;
+    --apple-canvas: #000000;
+    --apple-surface: #121214;
+    --apple-surface-card: #161618;
+    --apple-surface-elevated: #1c1c1e;
+    --apple-surface-hover: #242428;
+    --apple-text-primary: #f5f5f7;
+    --apple-text-secondary: #86868b;
+    --apple-text-tertiary: #6e6e73;
+    --apple-blue: #0071e3;
+    --apple-blue-hover: #0077ed;
+    --apple-green: #30d158;
+    --apple-border-subtle: rgba(255, 255, 255, 0.08);
+    --apple-border-light: rgba(255, 255, 255, 0.12);
   }
 
   body {
     font-family: var(--apple-font);
-    background-color: #030712;
-    color: #f3f4f6;
+    background-color: var(--apple-canvas);
+    color: var(--apple-text-primary);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.011em;
   }
 }
 
-/* Custom Utilities for Apple HIG Aesthetics */
+/* Apple Liquid Glass Material */
+.apple-glass {
+  background: rgba(18, 18, 20, 0.75);
+  backdrop-filter: blur(25px) saturate(190%);
+  -webkit-backdrop-filter: blur(25px) saturate(190%);
+  border: 1px solid var(--apple-border-subtle);
+}
+
+.apple-glass-elevated {
+  background: rgba(24, 24, 28, 0.82);
+  backdrop-filter: blur(35px) saturate(200%);
+  -webkit-backdrop-filter: blur(35px) saturate(200%);
+  border: 1px solid var(--apple-border-light);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+}
+
+.apple-card {
+  background: var(--apple-surface-card);
+  border: 1px solid var(--apple-border-subtle);
+  border-radius: 20px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-card:hover {
+  background: var(--apple-surface-hover);
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Apple Pill Button */
+.apple-btn-primary {
+  background: var(--apple-blue);
+  color: #ffffff;
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(0, 113, 227, 0.25);
+}
+
+.apple-btn-primary:hover {
+  background: var(--apple-blue-hover);
+  box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35);
+  transform: translateY(-1px);
+}
+
+.apple-btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--apple-text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+/* Scrollbar refinement */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -25,39 +99,7 @@
   scrollbar-width: none;
 }
 
-/* Apple-style translucent glass card */
-.glass-panel {
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.glass-modal {
-  background: rgba(10, 15, 30, 0.88);
-  backdrop-filter: blur(30px) saturate(200%);
-  -webkit-backdrop-filter: blur(30px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-/* Subtle Apple shimmer animation */
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-.animate-shimmer {
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0) 100%);
-  background-size: 200% 100%;
-  animation: shimmer 3s infinite;
-}
-
-/* View transition spring scale */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 0.25s;
+/* Smooth Apple easing */
+* {
+  -webkit-tap-highlight-color: transparent;
 }

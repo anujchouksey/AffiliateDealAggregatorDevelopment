@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flame, Laptop, Tv, Home, Gamepad2, Shirt, CreditCard, Code2, SlidersHorizontal, Filter } from 'lucide-react';
+import { Sparkles, Laptop, Tv, Home, Gamepad2, Shirt, CreditCard, Code2, ChevronDown } from 'lucide-react';
 
 interface CategoryNavProps {
   selectedCategory: string;
@@ -19,7 +19,7 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
   onSelectStore
 }) => {
   const categories = [
-    { name: 'All Deals', icon: Flame },
+    { name: 'All Deals', icon: Sparkles },
     { name: 'Credit Cards & Finance', icon: CreditCard },
     { name: 'Software & SaaS', icon: Code2 },
     { name: 'Electronics', icon: Tv },
@@ -32,11 +32,12 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
   const stores = ['All Stores', 'Amazon', 'Walmart', 'BestBuy', 'Target', 'Chase', 'Amex', 'NordVPN', 'Hostinger'];
 
   return (
-    <div className="bg-slate-900/60 border-b border-slate-800/80 sticky top-[69px] z-30 backdrop-blur-md">
+    <div className="bg-black/60 border-b border-white/[0.06] sticky top-14 md:top-16 z-30 backdrop-blur-xl transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
-          {/* Category Pills Slider */}
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+          
+          {/* Apple Segmented Pill Carousel */}
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
             {categories.map((cat) => {
               const Icon = cat.icon;
               const isSelected = selectedCategory === cat.name;
@@ -44,50 +45,50 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
                 <button
                   key={cat.name}
                   onClick={() => onSelectCategory(cat.name)}
-                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold shrink-0 transition-all ${
+                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium shrink-0 transition-all duration-200 ${
                     isSelected
-                      ? 'bg-orange-500 text-slate-950 shadow-md shadow-orange-500/20'
-                      : 'bg-slate-800/80 text-slate-300 hover:bg-slate-800 hover:text-white border border-slate-700/50'
+                      ? 'bg-white text-black font-semibold shadow-sm scale-[1.02]'
+                      : 'bg-white/[0.05] text-[#86868b] hover:text-[#f5f5f7] hover:bg-white/[0.09]'
                   }`}
                 >
-                  <Icon className="w-3.5 h-3.5" />
+                  <Icon className={`w-3.5 h-3.5 ${isSelected ? 'text-black' : 'text-[#86868b]'}`} />
                   <span>{cat.name}</span>
                 </button>
               );
             })}
           </div>
 
-          {/* Controls: Store Filter & Sorting */}
-          <div className="flex items-center gap-2 self-end md:self-auto">
+          {/* Controls: Clean Filter & Sort Pills */}
+          <div className="flex items-center gap-2 self-end md:self-auto shrink-0">
             {/* Store Select */}
-            <div className="flex items-center gap-1.5 bg-slate-950 px-2.5 py-1.5 rounded-xl border border-slate-800 text-xs">
-              <Filter className="w-3.5 h-3.5 text-indigo-400" />
+            <div className="relative">
               <select
                 value={selectedStore}
                 onChange={(e) => onSelectStore(e.target.value)}
-                className="bg-transparent text-slate-300 text-xs font-medium outline-none cursor-pointer"
+                className="appearance-none bg-white/[0.05] hover:bg-white/[0.09] text-[#f5f5f7] text-xs font-medium pl-3 pr-7 py-1.5 rounded-full border border-white/[0.08] outline-none cursor-pointer transition-colors"
               >
                 {stores.map((s) => (
-                  <option key={s} value={s} className="bg-slate-900 text-slate-200">
+                  <option key={s} value={s} className="bg-[#1c1c1e] text-[#f5f5f7]">
                     {s}
                   </option>
                 ))}
               </select>
+              <ChevronDown className="w-3.5 h-3.5 text-[#86868b] absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
 
             {/* Sort Select */}
-            <div className="flex items-center gap-1.5 bg-slate-950 px-2.5 py-1.5 rounded-xl border border-slate-800 text-xs">
-              <SlidersHorizontal className="w-3.5 h-3.5 text-amber-400" />
+            <div className="relative">
               <select
                 value={sortBy}
                 onChange={(e) => onSortChange(e.target.value as any)}
-                className="bg-transparent text-slate-300 text-xs font-bold outline-none cursor-pointer"
+                className="appearance-none bg-white/[0.05] hover:bg-white/[0.09] text-[#f5f5f7] text-xs font-medium pl-3 pr-7 py-1.5 rounded-full border border-white/[0.08] outline-none cursor-pointer transition-colors"
               >
-                <option value="popular" className="bg-slate-900 text-slate-200">Sort: 🔥 Upvotes</option>
-                <option value="discount" className="bg-slate-900 text-slate-200">Sort: 💥 % Discount</option>
-                <option value="newest" className="bg-slate-900 text-slate-200">Sort: 🆕 Newest</option>
-                <option value="price" className="bg-slate-900 text-slate-200">Sort: 🏷️ Price: Low to High</option>
+                <option value="popular" className="bg-[#1c1c1e] text-[#f5f5f7]">Most Popular</option>
+                <option value="discount" className="bg-[#1c1c1e] text-[#f5f5f7]">Highest Discount</option>
+                <option value="newest" className="bg-[#1c1c1e] text-[#f5f5f7]">Newest First</option>
+                <option value="price" className="bg-[#1c1c1e] text-[#f5f5f7]">Price: Low to High</option>
               </select>
+              <ChevronDown className="w-3.5 h-3.5 text-[#86868b] absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
           </div>
         </div>

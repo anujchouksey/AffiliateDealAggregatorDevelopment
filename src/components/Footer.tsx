@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flame, ShieldCheck, DollarSign, Smartphone, Scale, FileText, Mail, Shield } from 'lucide-react';
+import { Smartphone, Scale, FileText, Mail, Shield, ArrowUpRight } from 'lucide-react';
 import type { AffiliateConfig } from '../types';
 
 interface FooterProps {
@@ -18,120 +18,126 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenLegal
 }) => {
   return (
-    <footer className="bg-slate-950 border-t border-slate-800/80 text-slate-400 text-xs py-10 px-4 sm:px-6 lg:px-8 mt-16">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+    <footer className="bg-black border-t border-white/[0.08] text-[#86868b] text-xs py-12 px-4 sm:px-6 lg:px-8 mt-20 transition-colors">
+      <div className="max-w-7xl mx-auto">
         
-        {/* Column 1: Brand & Model */}
-        <div className="space-y-3">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-orange-500 flex items-center justify-center text-slate-950 font-black shadow-lg">
-              <Flame className="w-5 h-5 fill-current" />
+        {/* Apple Fine Print Disclosure */}
+        <div className="pb-8 mb-8 border-b border-white/[0.06] text-[11px] leading-relaxed text-[#6e6e73] space-y-1.5">
+          <p>
+            1. Pricing and availability of listed products and services are accurate at the time of publication and subject to change by respective retailers.
+          </p>
+          <p>
+            2. DealPulse earns qualifying commissions through affiliate referral links at zero additional cost to consumers.
+          </p>
+        </div>
+
+        {/* Multi-Column Nav Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10 text-[12px]">
+          
+          {/* Column 1: Brand & Intelligence */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-md bg-white/[0.08] border border-white/[0.12] flex items-center justify-center">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#0071e3]" />
+              </div>
+              <span className="font-semibold text-sm tracking-tight text-[#f5f5f7]">DealPulse</span>
             </div>
-            <span className="font-bold text-lg text-slate-100">DealPulse</span>
+            <p className="text-[#86868b] leading-relaxed text-[12px]">
+              Engineered retail price intelligence platform. Curating price drops and hardware deals with zero ad clutter.
+            </p>
+            {isAdminAuthenticated && (
+              <p className="text-[11px] text-[#2997ff] font-mono">
+                Active Partner Tag: {affiliateConfig.amazonTag}
+              </p>
+            )}
           </div>
-          <p className="text-slate-400 leading-relaxed text-[11px]">
-            Automated deal aggregator and price comparison platform. Built with Apple HIG design principles — responsive across iOS, Android, and Web.
-          </p>
-          <div className="flex items-center gap-2 text-[10px] text-emerald-400 bg-emerald-950/40 p-2 rounded-xl border border-emerald-500/20">
-            <ShieldCheck className="w-4 h-4 shrink-0 text-emerald-400" />
-            <span>
-              {isAdminAuthenticated ? (
-                <>Active Tag: <strong className="font-mono">{affiliateConfig.amazonTag}</strong></>
-              ) : (
-                'Verified Deals & Direct Best-Price Discounts'
-              )}
-            </span>
+
+          {/* Column 2: Legal & Transparency */}
+          <div>
+            <h4 className="font-medium text-[#f5f5f7] text-xs uppercase tracking-wider mb-3">Legal & Trust</h4>
+            <ul className="space-y-2.5">
+              <li>
+                <button
+                  onClick={() => onOpenLegal?.('ftc')}
+                  className="text-[#86868b] hover:text-[#f5f5f7] transition-colors flex items-center gap-1.5 text-[12px]"
+                >
+                  <FileText className="w-3.5 h-3.5 text-[#86868b]" />
+                  <span>FTC Affiliate Disclosure</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onOpenLegal?.('privacy')}
+                  className="text-[#86868b] hover:text-[#f5f5f7] transition-colors flex items-center gap-1.5 text-[12px]"
+                >
+                  <Shield className="w-3.5 h-3.5 text-[#86868b]" />
+                  <span>Privacy Policy (GDPR / CCPA)</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onOpenLegal?.('terms')}
+                  className="text-[#86868b] hover:text-[#f5f5f7] transition-colors flex items-center gap-1.5 text-[12px]"
+                >
+                  <Scale className="w-3.5 h-3.5 text-[#86868b]" />
+                  <span>Terms of Service</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onOpenLegal?.('contact')}
+                  className="text-[#86868b] hover:text-[#f5f5f7] transition-colors flex items-center gap-1.5 text-[12px]"
+                >
+                  <Mail className="w-3.5 h-3.5 text-[#86868b]" />
+                  <span>Contact & Press</span>
+                </button>
+              </li>
+            </ul>
           </div>
-        </div>
 
-        {/* Column 2: Legal & Trust (Crucial for AdSense & Business Valuation) */}
-        <div>
-          <h4 className="font-bold text-slate-200 text-sm mb-3">Legal & Transparency</h4>
-          <ul className="space-y-2 text-[11px]">
-            <li>
+          {/* Column 3: Platform & Transparency */}
+          <div>
+            <h4 className="font-medium text-[#f5f5f7] text-xs uppercase tracking-wider mb-3">Shopper Promise</h4>
+            <p className="text-[#86868b] leading-relaxed mb-3 text-[12px]">
+              0% subscription fees. All price comparisons and deal feeds are 100% free for users, funded through verified retailer partnerships.
+            </p>
+            {isAdminAuthenticated && (
               <button
-                onClick={() => onOpenLegal?.('ftc')}
-                className="text-slate-400 hover:text-emerald-300 transition-colors flex items-center gap-1.5"
+                onClick={onOpenSettings}
+                className="text-[11px] text-[#2997ff] hover:underline transition-colors font-medium"
               >
-                <FileText className="w-3.5 h-3.5 text-emerald-400" />
-                <span>FTC Affiliate Disclosure</span>
+                Configure Tracking Tags &rarr;
               </button>
-            </li>
-            <li>
-              <button
-                onClick={() => onOpenLegal?.('privacy')}
-                className="text-slate-400 hover:text-indigo-300 transition-colors flex items-center gap-1.5"
-              >
-                <Shield className="w-3.5 h-3.5 text-indigo-400" />
-                <span>Privacy Policy (GDPR / CCPA)</span>
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => onOpenLegal?.('terms')}
-                className="text-slate-400 hover:text-amber-300 transition-colors flex items-center gap-1.5"
-              >
-                <Scale className="w-3.5 h-3.5 text-amber-400" />
-                <span>Terms of Service</span>
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => onOpenLegal?.('contact')}
-                className="text-slate-400 hover:text-orange-300 transition-colors flex items-center gap-1.5"
-              >
-                <Mail className="w-3.5 h-3.5 text-orange-400" />
-                <span>Contact & Partnerships</span>
-              </button>
-            </li>
-          </ul>
-        </div>
+            )}
+          </div>
 
-        {/* Column 3: Transparency & Free Access */}
-        <div>
-          <h4 className="font-bold text-slate-200 text-sm mb-3">Consumer Promise</h4>
-          <p className="text-slate-400 text-[11px] leading-relaxed mb-3">
-            0% subscription fees. All savings and discounts are 100% free for users, funded through participating brand partnerships and non-intrusive banners.
-          </p>
-          {isAdminAuthenticated ? (
+          {/* Column 4: Native App Experience (PWA) */}
+          <div>
+            <h4 className="font-medium text-[#f5f5f7] text-xs uppercase tracking-wider mb-3">Install App</h4>
+            <p className="text-[#86868b] leading-relaxed mb-3 text-[12px]">
+              Install DealPulse directly onto your iPhone or Mac Home Screen for zero-latency price notifications.
+            </p>
             <button
-              onClick={onOpenSettings}
-              className="text-xs bg-slate-900 hover:bg-slate-800 text-slate-200 px-3 py-1.5 rounded-xl border border-slate-700 transition-colors flex items-center gap-1.5 font-semibold"
+              onClick={onOpenPwaModal}
+              className="inline-flex items-center gap-1.5 text-[12px] text-[#f5f5f7] bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.08] px-3.5 py-1.5 rounded-full transition-colors"
             >
-              <DollarSign className="w-3.5 h-3.5 text-emerald-400" /> Configure Affiliate IDs
+              <Smartphone className="w-3.5 h-3.5 text-[#2997ff]" />
+              <span>iOS & Android PWA</span>
+              <ArrowUpRight className="w-3 h-3 text-[#86868b]" />
             </button>
-          ) : (
-            <div className="flex items-center gap-1.5 text-[11px] text-slate-400">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-              <span>Partner-supported at zero cost to shoppers.</span>
-            </div>
-          )}
+          </div>
         </div>
 
-        {/* Column 4: PWA Native Apps */}
-        <div>
-          <h4 className="font-bold text-slate-200 text-sm mb-3">Cross-Platform (PWA)</h4>
-          <p className="text-slate-400 text-[11px] leading-relaxed mb-3">
-            Installable on iPhone (Safari Save to Home Screen) and Android Chrome for native app-like deal notifications.
+        {/* Bottom Attribution & Copyright */}
+        <div className="pt-6 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#86868b]">
+          <p>
+            Copyright &copy; {new Date().getFullYear()} DealPulse. Developed by <span className="text-[#f5f5f7] font-medium">FidlogicItsolutions</span>. All rights reserved.
           </p>
-          <button
-            onClick={onOpenPwaModal}
-            className="flex items-center gap-2 text-xs text-indigo-300 hover:text-white bg-indigo-950/40 hover:bg-indigo-900/60 border border-indigo-500/30 px-3 py-1.5 rounded-xl font-semibold transition-all group shadow"
-          >
-            <Smartphone className="w-4 h-4 text-indigo-400 group-hover:scale-110 transition-transform" />
-            <span>iOS & Android Ready &rarr;</span>
-          </button>
+          <p className="text-[#6e6e73]">
+            Cupertino-Grade Web Architecture
+          </p>
         </div>
-      </div>
 
-      {/* Bottom Attribution & FTC Disclaimer Bar */}
-      <div className="max-w-7xl mx-auto pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px]">
-        <p className="text-slate-500">
-          Developed by <span className="font-semibold text-slate-300">FidlogicItsolutions</span>. All rights reserved.
-        </p>
-        <p className="text-slate-500 text-[10px] text-center sm:text-right">
-          As an affiliate partner, DealPulse earns from qualifying purchases.
-        </p>
       </div>
     </footer>
   );

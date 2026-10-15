@@ -24,7 +24,7 @@ import { isAdminSessionValid, terminateAdminSession } from './utils/adminSecurit
 import { getAdConfig, saveAdConfig } from './utils/adConfig';
 import { fetchLatestRSSDeals } from './services/dealFetcher';
 import { requestNotificationPermission, isNotificationsEnabled, triggerDealPushNotification } from './services/notificationService';
-import { Sparkles, Flame, Settings, ShieldCheck, Rss, Shield } from 'lucide-react';
+import { Sparkles, Flame } from 'lucide-react';
 
 export function App() {
   const [viewMode, setViewMode] = useState<'storefront' | 'admin'>('storefront');
@@ -432,7 +432,7 @@ export function App() {
 
   // Otherwise, render Storefront View
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-orange-500 selection:text-slate-950">
+    <div className="min-h-screen bg-black text-[#f5f5f7] flex flex-col selection:bg-[#0071e3] selection:text-white">
       {/* Header */}
       <Header
         searchQuery={searchQuery}
@@ -479,81 +479,58 @@ export function App() {
           onOpenAdmin={handleOpenAdminTrigger}
         />
 
-        {/* Hero Alert Banner */}
-        <div className="mb-6 bg-gradient-to-r from-orange-950/60 via-slate-900 to-amber-950/60 border border-orange-500/30 rounded-2xl p-4 md:p-5 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-2xl bg-orange-500/20 border border-orange-500/40 flex items-center justify-center shrink-0">
-              <Flame className="w-6 h-6 text-orange-400 animate-pulse" />
-            </div>
-            <div>
-              <h2 className="text-sm md:text-base font-extrabold text-slate-100 flex items-center gap-2">
-                Top Trending Deals & Daily Price Drops
-                <span className="text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full font-bold">
-                  Verified Best Prices
-                </span>
-              </h2>
-              <p className="text-xs text-slate-400 mt-0.5">
-                {isAdminAuthenticated ? (
-                  <>Active Commission Tracking: <span className="text-amber-300 font-mono">{affiliateConfig.amazonTag}</span>. All deals generating revenue.</>
-                ) : (
-                  'Real-time price drops from top retailers, financial rewards & software deals curated daily.'
-                )}
-              </p>
-            </div>
+        {/* Apple Keynote Hero */}
+        <section className="pt-4 pb-8 md:pt-8 md:pb-10 text-center max-w-3xl mx-auto px-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.05] border border-white/[0.08] text-xs font-medium text-[#86868b] mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#30d158]" />
+            <span>Retail Price Intelligence</span>
+            <span className="text-white/20">•</span>
+            <span className="text-[#f5f5f7]">Verified Drops</span>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0 w-full md:w-auto justify-end">
-            {isAdminAuthenticated && (
-              <>
-                <button
-                  onClick={() => setViewMode('admin')}
-                  className="px-3.5 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-xl text-xs font-bold shadow-md transition-all flex items-center gap-1.5"
-                >
-                  <Shield className="w-4 h-4 text-purple-200" /> Admin Studio
-                  {pendingSuggestionsCount > 0 && (
-                    <span className="bg-amber-400 text-slate-950 text-[10px] font-black px-1.5 py-0.2 rounded-full">
-                      {pendingSuggestionsCount}
-                    </span>
-                  )}
-                </button>
-                <button
-                  onClick={() => setShowAutoCuratorModal(true)}
-                  className="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs font-bold border border-slate-700 shadow-md transition-all flex items-center gap-1.5"
-                >
-                  <Sparkles className="w-4 h-4 text-amber-300" /> Auto-Curate
-                </button>
-                <button
-                  onClick={() => setShowAffiliateSettingsModal(true)}
-                  className="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs font-semibold border border-slate-700 transition-colors flex items-center gap-1.5"
-                >
-                  <Settings className="w-3.5 h-3.5 text-emerald-400" />
-                </button>
-              </>
-            )}
-            <button
-              onClick={handleFetchRSS}
-              disabled={isSyncingRSS}
-              className="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs font-bold border border-slate-700 shadow-md transition-all flex items-center gap-1.5"
-            >
-              <Rss className={`w-4 h-4 text-orange-400 ${isSyncingRSS ? 'animate-spin' : ''}`} />
-              <span>{isSyncingRSS ? 'Syncing...' : 'Fetch RSS'}</span>
-            </button>
-          </div>
-        </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#f5f5f7] leading-[1.12] mb-3">
+            The smartest way to catch <br className="hidden sm:inline" />
+            <span className="bg-gradient-to-b from-white via-white/90 to-[#86868b] bg-clip-text text-transparent">
+              every price drop.
+            </span>
+          </h1>
 
-        {/* Status Bar */}
-        <div className="flex items-center justify-between mb-4 text-xs text-slate-400">
+          <p className="text-sm sm:text-base text-[#86868b] max-w-xl mx-auto leading-relaxed">
+            Curated price drops, verified hardware discounts, and rewards from Apple, Amazon, BestBuy, and leading tech retailers.
+          </p>
+
+          {isAdminAuthenticated && (
+            <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0071e3]/10 border border-[#0071e3]/20 text-xs text-[#2997ff]">
+              <span>Tracking Tag: <strong className="font-mono">{affiliateConfig.amazonTag}</strong></span>
+              <button
+                onClick={() => setViewMode('admin')}
+                className="underline hover:text-white font-medium ml-1"
+              >
+                Open Studio
+              </button>
+            </div>
+          )}
+        </section>
+
+        {/* Section Header */}
+        <div className="flex items-center justify-between mb-5 pb-3 border-b border-white/[0.06] text-xs text-[#86868b]">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-slate-200">{sortedDeals.length} Deals & Offers</span>
+            <span className="font-medium text-[#f5f5f7] text-sm">Featured Drops</span>
+            <span className="text-[#86868b]">({sortedDeals.length})</span>
             {selectedCategory !== 'All Deals' && (
-              <span className="bg-slate-800 text-slate-300 px-2 py-0.5 rounded-full text-[11px]">Category: {selectedCategory}</span>
+              <span className="bg-white/[0.08] text-[#f5f5f7] px-2.5 py-0.5 rounded-full text-[11px] font-medium">
+                {selectedCategory}
+              </span>
             )}
             {savedOnly && (
-              <span className="bg-amber-950 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-full text-[11px]">Saved Bookmarks</span>
+              <span className="bg-white text-black font-semibold px-2 py-0.5 rounded-full text-[10px]">
+                Bookmarks
+              </span>
             )}
           </div>
-          <div className="flex items-center gap-1.5 text-emerald-400 text-[11px]">
-            <ShieldCheck className="w-4 h-4" /> 100% Affiliate Link Ready
+          <div className="flex items-center gap-1.5 text-xs text-[#86868b]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#30d158]" />
+            <span>Direct Retailer Links</span>
           </div>
         </div>
 
