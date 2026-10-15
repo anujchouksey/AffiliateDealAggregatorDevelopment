@@ -142,6 +142,33 @@ export const AffiliateSettingsModal: React.FC<AffiliateSettingsModalProps> = ({ 
             </div>
           </div>
 
+          {/* Mobile App Download Links (App Store & Google Play) */}
+          <div className="pt-3 border-t border-slate-800">
+            <span className="block text-xs font-semibold text-slate-200 mb-2">Mobile App Store Links (Footer Downloads)</span>
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="block text-[11px] font-medium text-slate-400 mb-1">Apple App Store URL</label>
+                <input
+                  type="url"
+                  value={config.appStoreUrl || ''}
+                  onChange={(e) => setConfig({ ...config, appStoreUrl: e.target.value })}
+                  placeholder="https://apps.apple.com/app/dealpulse"
+                  className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 outline-none focus:border-[#0071e3] transition-colors"
+                />
+              </div>
+              <div>
+                <label className="block text-[11px] font-medium text-slate-400 mb-1">Google Play Store URL</label>
+                <input
+                  type="url"
+                  value={config.playStoreUrl || ''}
+                  onChange={(e) => setConfig({ ...config, playStoreUrl: e.target.value })}
+                  placeholder="https://play.google.com/store/apps/details?id=..."
+                  className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 outline-none focus:border-[#30d158] transition-colors"
+                />
+              </div>
+            </div>
+          </div>
+
           <div className="bg-emerald-950/40 border border-emerald-500/30 p-3 rounded-xl flex items-start gap-2.5 text-xs text-emerald-300">
             <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
             <div>

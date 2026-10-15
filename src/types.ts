@@ -37,6 +37,8 @@ export interface AffiliateConfig {
   nikeId: string;
   creditCardTag: string;
   softwareTag: string;
+  appStoreUrl?: string;
+  playStoreUrl?: string;
 }
 
 export interface ShareData {

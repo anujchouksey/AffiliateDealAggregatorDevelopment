@@ -10,7 +10,9 @@ export const DEFAULT_AFFILIATE_CONFIG: AffiliateConfig = {
   homedepotId: 'dealpulse_homedepot',
   nikeId: 'dealpulse_nike',
   creditCardTag: 'dealpulse_cc_rewards',
-  softwareTag: 'dealpulse_saas_aff'
+  softwareTag: 'dealpulse_saas_aff',
+  appStoreUrl: 'https://apps.apple.com/app/dealpulse',
+  playStoreUrl: 'https://play.google.com/store/apps/details?id=com.dealpulse.app'
 };
 
 export function getAffiliateConfig(): AffiliateConfig {
