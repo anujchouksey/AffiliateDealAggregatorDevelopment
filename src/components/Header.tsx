@@ -112,17 +112,6 @@ export const Header: React.FC<HeaderProps> = ({
             )}
           </button>
 
-          {/* RSS Feed Sync Pill */}
-          <button
-            onClick={onFetchRSS}
-            disabled={isSyncingRSS}
-            className="h-9 px-3 rounded-full text-xs font-medium bg-white/[0.06] hover:bg-white/[0.1] text-[#86868b] hover:text-[#f5f5f7] border border-transparent transition-all flex items-center gap-1.5 disabled:opacity-50"
-            title="Sync Latest Retailer Feeds"
-          >
-            <Rss className={`w-3.5 h-3.5 text-[#2997ff] ${isSyncingRSS ? 'animate-spin' : ''}`} />
-            <span className="hidden md:inline">{isSyncingRSS ? 'Syncing...' : 'Sync'}</span>
-          </button>
-
           {/* Push Notifications Pill */}
           <button
             onClick={onToggleNotifications}
@@ -136,9 +125,20 @@ export const Header: React.FC<HeaderProps> = ({
             <Bell className="w-3.5 h-3.5" />
           </button>
 
-          {/* Admin Mode Controls */}
+          {/* Admin-Only Controls: Strictly hidden from normal visitors */}
           {isAdminAuthenticated ? (
-            <div className="flex items-center gap-1.5 pl-1 border-l border-white/10">
+            <div className="flex items-center gap-1.5 pl-1.5 border-l border-white/10">
+              {/* Admin-Only RSS Sync */}
+              <button
+                onClick={onFetchRSS}
+                disabled={isSyncingRSS}
+                className="h-9 px-3 rounded-full text-xs font-medium bg-white/[0.08] hover:bg-white/[0.14] text-[#2997ff] border border-white/[0.08] transition-all flex items-center gap-1.5 disabled:opacity-50"
+                title="Admin RSS Sync"
+              >
+                <Rss className={`w-3.5 h-3.5 ${isSyncingRSS ? 'animate-spin' : ''}`} />
+                <span className="hidden md:inline">{isSyncingRSS ? 'Syncing...' : 'Fetch RSS'}</span>
+              </button>
+
               <button
                 onClick={onOpenAdmin}
                 className="h-9 px-3.5 rounded-full text-xs font-medium bg-[#0071e3] hover:bg-[#0077ed] text-white transition-all flex items-center gap-1.5 shadow-sm"
@@ -163,7 +163,7 @@ export const Header: React.FC<HeaderProps> = ({
             /* Discrete, invisible-feeling admin trigger */
             <button
               onClick={onOpenAdmin}
-              className="w-4 h-9 opacity-0 hover:opacity-20 transition-opacity cursor-default"
+              className="w-3 h-9 opacity-0 hover:opacity-10 transition-opacity cursor-default"
               title="Portal"
               tabIndex={-1}
             />

@@ -498,18 +498,6 @@ export function App() {
           <p className="text-sm sm:text-base text-[#86868b] max-w-xl mx-auto leading-relaxed">
             Curated price drops, verified hardware discounts, and rewards from Apple, Amazon, BestBuy, and leading tech retailers.
           </p>
-
-          {isAdminAuthenticated && (
-            <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0071e3]/10 border border-[#0071e3]/20 text-xs text-[#2997ff]">
-              <span>Tracking Tag: <strong className="font-mono">{affiliateConfig.amazonTag}</strong></span>
-              <button
-                onClick={() => setViewMode('admin')}
-                className="underline hover:text-white font-medium ml-1"
-              >
-                Open Studio
-              </button>
-            </div>
-          )}
         </section>
 
         {/* Section Header */}
