@@ -1,32 +1,25 @@
-# React + TypeScript + Vite
+# DealPulse - Curated Deal Aggregator & Price Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+**Developed by FidlogicItsolutions**  
+**Official Contact:** [contact@fidlogic.com](mailto:contact@fidlogic.com)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Overview
+DealPulse is a modern, high-performance deal aggregation platform engineered with Apple Human Interface Guidelines (HIG). It features 90-day interactive price history graphs, all-time low price drop alerts, verified discount promo codes, and multi-network affiliate monetization.
 
-## React Compiler
+## Key Architecture & Privacy Highlights
+- **100% Royalty-Free & Secure Fonts**: Built strictly with native operating system UI fonts (`system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto...`). Zero external font CDN requests, zero font copyright liabilities, zero binary font downloads.
+- **Privacy-by-Design (Zero Server-Side User Data Storage)**: No central database tracking user accounts, passwords, or personal identity. All saved bookmarks and upvotes are stored strictly inside the user's browser `localStorage`.
+- **Outbound Affiliate Monetization**: Seamless referral tagging for Amazon Associates, Walmart, and Best Buy.
+- **Mobile First**: Progressive Web App (PWA) with App Store & Google Play badge integration and Capacitor support.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+## Single Command Server Deployment
+To deploy or update on your Linux server:
+```bash
+curl -fsSL https://raw.githubusercontent.com/anujchouksey/AffiliateDealAggregatorDevelopment/main/install.sh | bash
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Support & Inquiries
+For commercial partnerships, acquisitions, or support, please contact:
+**Email:** `contact@fidlogic.com`

@@ -122,7 +122,7 @@ sudo systemctl restart nginx
 
 # Attempt to acquire official Let's Encrypt SSL certificate
 echo "🔐 Requesting Let's Encrypt certificate for $DOMAIN..."
-if sudo certbot --nginx --non-interactive --agree-tos --redirect -m admin@fidlogic.com -d "$DOMAIN"; then
+if sudo certbot --nginx --non-interactive --agree-tos --redirect -m contact@fidlogic.com -d "$DOMAIN"; then
   echo "✅ Let's Encrypt SSL certificate successfully obtained and configured!"
 else
   echo "⚠️ Let's Encrypt challenge skipped/failed. Enabling 2048-bit SSL fallback with HTTPS enabled..."

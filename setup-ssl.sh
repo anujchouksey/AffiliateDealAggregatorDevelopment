@@ -130,7 +130,7 @@ EOF
   sudo systemctl restart nginx
 
   echo "🔒 Requesting official Let's Encrypt SSL certificate for $DOMAIN..."
-  sudo certbot --nginx --non-interactive --agree-tos --redirect -m admin@fidlogic.com -d "$DOMAIN" || {
+  sudo certbot --nginx --non-interactive --agree-tos --redirect -m contact@fidlogic.com -d "$DOMAIN" || {
     echo "⚠️ Certbot challenge encountered an issue. Falling back to self-signed SSL..."
     sudo mkdir -p /etc/ssl/dealpulse
     sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \

@@ -83,3 +83,4 @@ DealPulse is 100% compliant with commercial advertising standards:
 ---
 *DealPulse is commercially certified and ready for operation or acquisition.*
 *Developed by FidlogicItsolutions. All rights reserved.*
+*Official Inquiries & Support:* `contact@fidlogic.com`
