@@ -1,0 +1,38 @@
+{
+  "id": "/",
+  "name": "DealPulse - Daily Deals & Discounts",
+  "short_name": "DealPulse",
+  "description": "Automated deal aggregator, hot product drops & instant discount tracking. Developed by FidlogicItsolutions.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "orientation": "portrait-primary",
+  "categories": ["shopping", "finance", "lifestyle"],
+  "icons": [
+    {
+      "src": "/pwa-icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "48x48",
+      "type": "image/svg+xml"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Electronics Deals",
+      "url": "/#electronics",
+      "description": "View hottest tech deals"
+    },
+    {
+      "name": "Credit Card Bonuses",
+      "url": "/#credit-cards",
+      "description": "View sign-up bonus offers"
+    }
+  ]
+}

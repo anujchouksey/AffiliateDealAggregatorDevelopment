@@ -1,0 +1,233 @@
+import type { Deal } from '../types';
+import { convertToAffiliateUrl } from '../utils/affiliate';
+
+const rawDeals: Omit<Deal, 'affiliateUrl'>[] = [
+  {
+    id: 'deal-card-1',
+    title: 'Chase Sapphire Preferred Card - Earn 60,000 Bonus Points ($750 Travel Value)',
+    description: 'Exclusive Financial Rewards Deal! Earn 60,000 bonus points after spending $4,000 on purchases in the first 3 months. Plus 3x on dining & select streaming.',
+    originalPrice: 750.00,
+    dealPrice: 0.00,
+    discountPercentage: 100,
+    couponCode: 'CHASEBONUS',
+    store: 'Chase',
+    category: 'Credit Cards & Finance',
+    imageUrl: '/images/chase_card.jpg',
+    rawUrl: 'https://creditcards.chase.com/a1/sapphire/preferred',
+    upvotes: 940,
+    downvotes: 11,
+    userVoted: null,
+    isSaved: false,
+    postedAt: 'Featured High Payout',
+    isFireDeal: true,
+    isStaffPick: true,
+    viewsCount: 8900,
+    commentsCount: 142,
+    bonusOffer: '🔥 60,000 Points Sign-Up Bonus ($750 Value)',
+    features: [
+      'Earn 60,000 bonus points after qualifying spend',
+      '3x points on dining, select streaming & online grocery',
+      '2x points on travel & $50 annual Ultimate Rewards Hotel Credit'
+    ]
+  },
+  {
+    id: 'deal-card-2',
+    title: 'American Express Gold Card - Earn 90,000 Membership Rewards Points',
+    description: 'Earn 90,000 points after spending $6,000 on eligible purchases in your first 6 months. 4x points at Restaurants & US Supermarkets.',
+    originalPrice: 900.00,
+    dealPrice: 0.00,
+    discountPercentage: 100,
+    couponCode: 'AMEXGOLD90K',
+    store: 'Amex',
+    category: 'Credit Cards & Finance',
+    imageUrl: '/images/amex_gold.jpg',
+    rawUrl: 'https://www.americanexpress.com/us/credit-cards/card/gold-card/',
+    upvotes: 780,
+    downvotes: 9,
+    userVoted: null,
+    isSaved: false,
+    postedAt: 'Top Finance Pick',
+    isFireDeal: true,
+    isStaffPick: true,
+    viewsCount: 6540,
+    commentsCount: 98,
+    bonusOffer: '💳 $120 Uber Cash + $120 Dining Credit Included',
+    features: [
+      '4x Points on Restaurants worldwide',
+      '4x Points at U.S. Supermarkets (up to $25k/yr)',
+      '$120 Uber Cash & $120 Dining Credit annually'
+    ]
+  },
+  {
+    id: 'deal-saas-1',
+    title: 'NordVPN 2-Year Ultimate Cybersecurity Plan - 72% OFF + 3 Extra Months Free',
+    description: 'Massive SaaS Software Deal! Get ultra-fast encrypted VPN, Threat Protection anti-malware, Cross-platform Password Manager, and 1TB Encrypted Cloud Storage.',
+    originalPrice: 320.00,
+    dealPrice: 89.99,
+    discountPercentage: 72,
+    couponCode: 'NORD72OFF',
+    store: 'NordVPN',
+    category: 'Software & SaaS',
+    imageUrl: '/images/nordvpn_software.jpg',
+    rawUrl: 'https://nordvpn.com/special-deal',
+    upvotes: 620,
+    downvotes: 7,
+    userVoted: null,
+    isSaved: false,
+    postedAt: 'Top SaaS Deal',
+    isFireDeal: true,
+    isStaffPick: true,
+    viewsCount: 4890,
+    commentsCount: 64,
+    bonusOffer: '⚡ 72% OFF + 3 Months Free + 30-Day Money Back Guarantee',
+    features: [
+      'Ultra-fast 6400+ servers in 111 countries',
+      'Malware protection, ad blocker & tracker blocker',
+      '1TB encrypted cloud storage included'
+    ]
+  },
+  {
+    id: 'deal-saas-2',
+    title: 'Hostinger Premium Cloud Web Hosting (Unlimited NVMe Storage + Free Domain)',
+    description: 'Launch websites effortlessly with 75% OFF + Free SSL, Free Email, Free Managed WordPress, and 24/7 Global Live Support.',
+    originalPrice: 143.88,
+    dealPrice: 35.88,
+    discountPercentage: 75,
+    couponCode: 'HOSTING75',
+    store: 'Hostinger',
+    category: 'Software & SaaS',
+    imageUrl: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop&q=80',
+    rawUrl: 'https://www.hostinger.com/web-hosting',
+    upvotes: 410,
+    downvotes: 4,
+    userVoted: null,
+    isSaved: false,
+    postedAt: '2 hours ago',
+    isFireDeal: true,
+    isStaffPick: false,
+    viewsCount: 3120,
+    commentsCount: 35,
+    bonusOffer: '🌐 Free Custom Domain Name Included ($14.99 Value)',
+    features: [
+      'Host up to 100 websites with NVMe SSD storage',
+      'Free Domain, Free SSL, and Weekly Backups',
+      '99.9% Uptime Guarantee with Cloudflare Protection'
+    ]
+  },
+  {
+    id: 'deal-1',
+    title: 'Sony WH-1000XM5 Wireless Industry Leading Noise Canceling Headphones - Black',
+    description: 'Special 30% OFF price drop on Amazon! Features 30-hour battery life, 8 mics for crisp call clarity, multi-point connection, and touch control.',
+    originalPrice: 399.99,
+    dealPrice: 278.00,
+    discountPercentage: 30,
+    couponCode: 'AUDIO30OFF',
+    store: 'Amazon',
+    category: 'Electronics',
+    imageUrl: '/images/sony_headphones.jpg',
+    rawUrl: 'https://www.amazon.com/dp/B09XS7JWHH',
+    upvotes: 482,
+    downvotes: 12,
+    userVoted: null,
+    isSaved: false,
+    postedAt: '12 mins ago',
+    isFireDeal: true,
+    isStaffPick: true,
+    viewsCount: 3420,
+    commentsCount: 48,
+    features: [
+      'Industry-leading Noise Cancellation with 2 processors',
+      'Up to 30-hour battery life with quick charging',
+      'Ultra-comfortable, lightweight design with soft fit leather'
+    ]
+  },
+  {
+    id: 'deal-2',
+    title: 'Apple MacBook Air 15" M3 Chip (16GB RAM, 512GB SSD) - Midnight Blue',
+    description: 'Save $300 instantly! Stunning Liquid Retina display, silent fanless design, MagSafe charging, and up to 18 hours battery power.',
+    originalPrice: 1499.00,
+    dealPrice: 1199.00,
+    discountPercentage: 20,
+    couponCode: 'MACM3SAVINGS',
+    store: 'Amazon',
+    category: 'Laptops & Tech',
+    imageUrl: '/images/macbook_air.jpg',
+    rawUrl: 'https://www.amazon.com/dp/B0CX23V6X5',
+    upvotes: 615,
+    downvotes: 8,
+    userVoted: null,
+    isSaved: false,
+    postedAt: '25 mins ago',
+    isFireDeal: true,
+    isStaffPick: true,
+    viewsCount: 5120,
+    commentsCount: 89,
+    features: [
+      'Powerful M3 8-core CPU and 10-core GPU',
+      'Immersive 15.3-inch Liquid Retina Display',
+      '1080p FaceTime HD camera & 6-speaker sound system'
+    ]
+  },
+  {
+    id: 'deal-3',
+    title: 'Ninja Max XL 5.5-Qt Digital Air Fryer with Max Crisp Technology',
+    description: 'Walmart Exclusive Rollback Price! Cook up to 3 lbs of wings or crispy fries with up to 75% less fat than traditional deep frying.',
+    originalPrice: 169.99,
+    dealPrice: 99.99,
+    discountPercentage: 41,
+    couponCode: 'CRISPY10',
+    store: 'Walmart',
+    category: 'Home & Kitchen',
+    imageUrl: '/images/ninja_airfryer.jpg',
+    rawUrl: 'https://www.walmart.com/ip/Ninja-Air-Fryer-Max-XL/983742',
+    upvotes: 329,
+    downvotes: 15,
+    userVoted: null,
+    isSaved: false,
+    postedAt: '1 hour ago',
+    isFireDeal: true,
+    isStaffPick: false,
+    viewsCount: 2190,
+    commentsCount: 31,
+    features: [
+      'Max Crisp Technology delivers 450°F super-heated air',
+      'Ceramic-coated nonstick basket and crisper plate',
+      '7 Versatile Cooking Programs (Air Fry, Roast, Reheat, etc.)'
+    ]
+  },
+  {
+    id: 'deal-4',
+    title: 'PlayStation 5 Console Slim Digital Edition - Marvel\'s Spider-Man 2 Bundle',
+    description: 'Includes PS5 Digital Slim console with 1TB SSD storage + full game voucher for Spider-Man 2. Incredible 4K HDR graphics and DualSense feedback.',
+    originalPrice: 499.99,
+    dealPrice: 399.99,
+    discountPercentage: 20,
+    couponCode: 'PS5SPIDEY',
+    store: 'Amazon',
+    category: 'Gaming',
+    imageUrl: '/images/ps5_console.jpg',
+    rawUrl: 'https://www.amazon.com/dp/B0CL5K53DS',
+    upvotes: 890,
+    downvotes: 21,
+    userVoted: null,
+    isSaved: false,
+    postedAt: '2 hours ago',
+    isFireDeal: true,
+    isStaffPick: true,
+    viewsCount: 7890,
+    commentsCount: 124,
+    features: [
+      'Slimmer design with 1TB internal high-speed SSD',
+      'DualSense Wireless Controller with Adaptive Triggers',
+      'Spider-Man 2 Digital Game Voucher Included'
+    ]
+  }
+];
+
+export const INITIAL_DEALS: Deal[] = rawDeals.map((deal) => {
+  const { affiliateUrl } = convertToAffiliateUrl(deal.rawUrl);
+  return {
+    ...deal,
+    affiliateUrl
+  };
+});

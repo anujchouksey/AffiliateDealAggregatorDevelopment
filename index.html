@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="author" content="FidlogicItsolutions" />
+    <meta name="description" content="DealPulse - Automated deal aggregator & curated price comparison platform. Verified 90-day price history graphs, all-time low alerts, and exclusive promo codes." />
+    <meta name="keywords" content="deals, discounts, price tracker, price history graph, all time low, coupons, promo codes, Slickdeals alternative, CamelCamelCamel, Amazon deals, Walmart rollbacks" />
+    <title>DealPulse - Daily Deals, Price History & Verified Discounts</title>
+
+    <!-- Open Graph / Facebook / WhatsApp / iMessage -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dealpulse.fidlogicitsolutions.com" />
+    <meta property="og:title" content="DealPulse - Daily Deals & Interactive Price History Tracker" />
+    <meta property="og:description" content="Stop overpaying. Track 90-day price trends, discover all-time low price drops, and claim verified promo codes across Amazon, Best Buy, and Walmart." />
+    <meta property="og:image" content="/pwa-icon.svg" />
+    <meta property="og:site_name" content="DealPulse" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DealPulse - Daily Deals & Price History Tracker" />
+    <meta name="twitter:description" content="Verified deals with 90-day interactive price history graphs. Instant price drop alerts and exclusive coupon codes." />
+    <meta name="twitter:image" content="/pwa-icon.svg" />
+
+    <!-- PWA Web App Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Apple iOS Safari PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="DealPulse" />
+    <link rel="apple-touch-icon" href="/pwa-icon.svg" />
+
+    <!-- Android Chrome & Color Scheme -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="DealPulse" />
+    <meta name="theme-color" content="#020617" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- Google Search Structured Data (JSON-LD Schema) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://dealpulse.fidlogicitsolutions.com/#website",
+          "url": "https://dealpulse.fidlogicitsolutions.com",
+          "name": "DealPulse",
+          "description": "Automated deal aggregation & curated price comparison platform",
+          "publisher": {
+            "@type": "Organization",
+            "name": "FidlogicItsolutions"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://dealpulse.fidlogicitsolutions.com/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
